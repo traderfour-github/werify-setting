@@ -1,0 +1,113 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Settings Service Api",
+        "description": "Settings Service Api",
+        "contact": {
+            "email": "arashrasoulzadeh@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0",
+        "x-logo": {
+            "url": "https://via.placeholder.com/190x90.png?text=L5-Swagger"
+        }
+    },
+    "paths": {
+        "/posts": {
+            "post": {
+                "tags": [
+                    "Post"
+                ],
+                "summary": "New blog post",
+                "operationId": "store",
+                "requestBody": {
+                    "description": "Post object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SettingItemRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "setting value",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SettingItemResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error"
+                    }
+                }
+            }
+        },
+        "/api/system/{key}": {
+            "get": {
+                "summary": "update/create a setting item.",
+                "description": "update/create a setting item.",
+                "operationId": "e8f62033502fdb881ae745acdb4e02ae",
+                "parameters": [
+                    {
+                        "name": "key",
+                        "in": "path",
+                        "description": "setting item key",
+                        "required": true,
+                        "example": "version"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "setting value",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SettingItemResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "SettingItemRequest": {
+                "title": "SettingItemRequest",
+                "description": "Class SettingItemViewModel",
+                "required": [
+                    "key",
+                    "data"
+                ],
+                "properties": {
+                    "key": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {}
+                    }
+                },
+                "type": "object"
+            },
+            "SettingItemResponse": {
+                "title": "SettingItemResponse",
+                "properties": {},
+                "type": "object"
+            }
+        }
+    }
+}
